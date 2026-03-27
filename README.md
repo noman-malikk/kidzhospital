@@ -75,7 +75,19 @@ Then open `http://localhost:8000`.
 
 ## GitHub Pages deployment
 
-### Option 1: Deploy from the repository root
+### Automatic deployment with GitHub Actions
+
+This repository now includes a GitHub Pages workflow at `.github/workflows/deploy-pages.yml`.
+
+After you push to GitHub, do this one-time setup in the repository:
+
+1. Open `Settings`
+2. Open `Pages`
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`
+
+After that, every push to `main` will automatically deploy the site to GitHub Pages.
+
+### Manual branch-based deployment
 
 1. Push the project to GitHub
 2. In the repository settings, open `Pages`
