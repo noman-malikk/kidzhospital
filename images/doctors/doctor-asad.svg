@@ -1,0 +1,30 @@
+<svg width="520" height="580" viewBox="0 0 520 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="56" y1="42" x2="462" y2="542" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFAFF"/>
+      <stop offset="0.5" stop-color="#F5FFFB"/>
+      <stop offset="1" stop-color="#FFF4EC"/>
+    </linearGradient>
+    <linearGradient id="tie" x1="244" y1="316" x2="281" y2="402" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF8F7F"/>
+      <stop offset="1" stop-color="#F26E5E"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="580" rx="40" fill="url(#bg)"/>
+  <circle cx="412" cy="106" r="52" fill="#D8F5EA"/>
+  <circle cx="114" cy="90" r="30" fill="#FFE8AE"/>
+  <path d="M0 446C89 404 172 398 255 420C343 444 421 502 520 486V580H0V446Z" fill="#EAF8F3"/>
+  <rect x="150" y="310" width="220" height="206" rx="78" fill="#F6FCFF"/>
+  <path d="M192 514C204 438 223 390 260 390C297 390 316 438 328 514H192Z" fill="#FFFFFF"/>
+  <path d="M217 314H303L322 514H198L217 314Z" fill="#FFFFFF"/>
+  <path d="M234 314L260 354L286 314" fill="#20304C"/>
+  <path d="M248 314H272V402H248V314Z" fill="url(#tie)"/>
+  <ellipse cx="260" cy="228" rx="82" ry="92" fill="#F4C7A8"/>
+  <path d="M176 224C176 178.713 212.713 142 258 142H268C313.287 142 350 178.713 350 224V239H176V224Z" fill="#222E46"/>
+  <path d="M196 191C212 162 240 146 274 146C308 146 336 164 352 194V225H196V191Z" fill="#222E46"/>
+  <path d="M223 246C223 270.301 239.566 290 260 290C280.434 290 297 270.301 297 246V230H223V246Z" fill="#EDB595"/>
+  <path d="M191 514C199 468 220 422 260 422C300 422 321 468 329 514H191Z" fill="#F4FBFF"/>
+  <path d="M225 458C231 448 244 441 260 441C276 441 289 448 295 458" stroke="#D5E8F5" stroke-width="4" stroke-linecap="round"/>
+  <rect x="64" y="58" width="136" height="42" rx="21" fill="white" fill-opacity="0.9"/>
+  <text x="88" y="86" fill="#1D2A44" font-family="Outfit, Arial, sans-serif" font-size="20" font-weight="700">Sample portrait</text>
+</svg>

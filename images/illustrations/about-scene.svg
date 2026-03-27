@@ -1,0 +1,32 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="76" y1="48" x2="554" y2="425" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFAFF"/>
+      <stop offset="0.48" stop-color="#F7FFFC"/>
+      <stop offset="1" stop-color="#FFF4ED"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="170" y1="117" x2="466" y2="352" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white"/>
+      <stop offset="1" stop-color="#F2FBFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="42" fill="url(#bg)"/>
+  <circle cx="518" cy="98" r="46" fill="#FFE8A7"/>
+  <circle cx="119" cy="89" r="28" fill="#D9F6EE"/>
+  <path d="M0 369C76 332 126 322 205 338C300 357 376 412 465 398C541 387 598 355 640 322V480H0V369Z" fill="#E6FBF4"/>
+  <rect x="160" y="125" width="320" height="220" rx="34" fill="url(#panel)" stroke="#D9EEF7" stroke-width="4"/>
+  <rect x="192" y="157" width="120" height="156" rx="26" fill="#E7F8FF"/>
+  <rect x="328" y="157" width="120" height="156" rx="26" fill="#FFF1EA"/>
+  <circle cx="252" cy="205" r="28" fill="#B8F3E5"/>
+  <circle cx="387" cy="207" r="28" fill="#FFD8CA"/>
+  <path d="M219 284C219 256.39 241.39 234 269 234H274C301.61 234 324 256.39 324 284V313H219V284Z" fill="#3FB7A8"/>
+  <path d="M353 286C353 260.59 373.59 240 399 240H407C432.41 240 453 260.59 453 286V313H353V286Z" fill="#FF9C8E"/>
+  <rect x="280" y="132" width="80" height="101" rx="26" fill="#F9FEFF" stroke="#D9EEF7" stroke-width="4"/>
+  <path d="M320 153V208" stroke="#6CCFF6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M292 180H348" stroke="#6CCFF6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M186 353C233 327 292 322 347 339C393 354 425 380 476 382" stroke="#B8F3E5" stroke-width="12" stroke-linecap="round"/>
+  <path d="M115 332C138 303 178 284 216 292" stroke="#C8EFFF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M505 315C482 291 444 277 412 281" stroke="#FFD8CA" stroke-width="10" stroke-linecap="round"/>
+  <path d="M148 139L153.5 152.5L167 158L153.5 163.5L148 177L142.5 163.5L129 158L142.5 152.5L148 139Z" fill="#FFD873"/>
+  <path d="M510 187L514 196.5L523.5 200.5L514 204.5L510 214L506 204.5L496.5 200.5L506 196.5L510 187Z" fill="#6CCFF6"/>
+</svg>
