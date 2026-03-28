@@ -13,7 +13,7 @@ Kidz Hospital is a premium, multi-page static website for a pediatric hospital b
 - `js/script.js` - mobile navigation, reveal animations, FAQ accordion, sticky header, year, and form validation/submission
 - `images/branding/` - logo, favicon, and Open Graph assets
 - `images/illustrations/` - homepage, about, and map artwork
-- `images/doctors/` - sample doctor portraits that can be replaced later
+- `images/doctors/` - doctor photos used by the homepage and about page
 - `.nojekyll` - ensures GitHub Pages serves folders like `/css`, `/js`, and `/images` without Jekyll processing
 
 ## Features
@@ -111,12 +111,9 @@ If the hospital uses `kidzhospital.org` for the website:
 
 These are intentionally marked in the code so the client can review them safely:
 
-- Hospital phone number
 - Emergency hotline
 - Full street address and landmark
 - Opening hours
-- WhatsApp number
-- Doctor names and credentials
 - Family testimonials
 - Final Formspree endpoint
 
