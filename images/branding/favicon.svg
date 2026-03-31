@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Kidz Hospital favicon">
   <title>Kidz Hospital favicon</title>
-  <rect width="256" height="256" fill="#ffffff"/>
 
   <!-- Icon group -->
-  <g transform="translate(18,38)">
+  <g transform="translate(8,34) scale(1.04)">
     <rect x="0" y="18" width="92" height="92" rx="14" fill="#4A97D3"/>
     <rect x="54" y="36" width="92" height="92" rx="14" fill="#9DCD08"/>
     <rect x="108" y="18" width="92" height="92" rx="14" fill="#F79A2E"/>

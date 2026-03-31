@@ -246,10 +246,10 @@ if (appointmentForm) {
     }
 
     const endpoint = appointmentForm.action || "";
-    if (endpoint.includes("your-form-id")) {
+    if (!endpoint) {
       showStatus(
-        "warning",
-        "Formspree is still using the placeholder endpoint. Replace it with the live endpoint for contact@kidzhospital.org to receive appointment inquiries.",
+        "error",
+        "The appointment form is not configured right now. Please call or WhatsApp 03088091000.",
       );
       return;
     }
@@ -272,7 +272,8 @@ if (appointmentForm) {
       });
 
       if (!response.ok) {
-        let message = "Unable to send the appointment request right now.";
+        let message =
+          "Unable to send the appointment request right now. Please call or WhatsApp 03088091000.";
         try {
           const payload = await response.json();
           if (payload?.errors?.[0]?.message) {
@@ -288,14 +289,14 @@ if (appointmentForm) {
       fields.forEach((field) => setFieldError(field, ""));
       showStatus(
         "success",
-        "Appointment request sent. The Kidz Hospital team will contact you to confirm the visit.",
+        "Appointment request sent. The Kidz Hospital team will contact you using the details you provided.",
       );
     } catch (error) {
       showStatus(
         "error",
         error instanceof Error
           ? error.message
-          : "Unable to send the appointment request right now.",
+          : "Unable to send the appointment request right now. Please call or WhatsApp 03088091000.",
       );
     } finally {
       submitButton.disabled = false;
