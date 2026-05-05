@@ -583,6 +583,13 @@ textarea {
   border-radius: calc(var(--radius-lg) - 12px);
 }
 
+.hero-note {
+  margin: 1.25rem 0 0;
+  color: hsl(214 16% 45%);
+  max-width: 38rem;
+  line-height: 1.7;
+}
+
 .floating-card {
   position: absolute;
   width: min(15rem, 42vw);
@@ -594,7 +601,7 @@ textarea {
 }
 
 .floating-card--top {
-  top: 12%;
+  top: -10%;
   left: -4%;
 }
 
