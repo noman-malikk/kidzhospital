@@ -304,3 +304,141 @@ if (appointmentForm) {
     }
   });
 }
+
+// Show the 24/7 emergency announcement once per visitor/browser.
+// The notice is created here so existing HTML pages do not need changing.
+(() => {
+  const storageKey = "kidz-hospital-emergency-24-7-v1";
+
+  try {
+    if (window.localStorage.getItem(storageKey) === "dismissed") {
+      return;
+    }
+  } catch (error) {
+    // Storage may be unavailable in private/restricted browsing modes.
+    // The announcement can still be displayed and dismissed normally.
+  }
+
+  const openAnnouncement = () => {
+    if (!document.body || document.querySelector(".kh-emergency-overlay")) {
+      return;
+    }
+
+    const lastFocusedElement = document.activeElement;
+    const overlay = document.createElement("div");
+    overlay.className = "kh-emergency-overlay";
+    overlay.innerHTML = `
+      <section class="kh-emergency-dialog" role="dialog" aria-modal="true"
+        aria-labelledby="kh-emergency-title" aria-describedby="kh-emergency-description">
+        <button class="kh-emergency-close" type="button" aria-label="Close announcement" data-close-emergency>
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M5 5l14 14M19 5L5 19"></path>
+          </svg>
+        </button>
+        <div class="kh-emergency-visual" aria-hidden="true">
+          <span class="kh-emergency-visual__circle kh-emergency-visual__circle--one"></span>
+          <span class="kh-emergency-visual__circle kh-emergency-visual__circle--two"></span>
+          <div class="kh-emergency-visual__symbol">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M30 11v38M11 30h38"></path>
+            </svg>
+          </div>
+          <span class="kh-emergency-visual__clock">24<span>/</span>7</span>
+          <span class="kh-emergency-visual__caption">Children's emergency</span>
+        </div>
+        <div class="kh-emergency-content">
+          <span class="kh-emergency-kicker"><span aria-hidden="true"></span> Important announcement</span>
+          <h2 id="kh-emergency-title">We're here for you <em>24/7</em></h2>
+          <p id="kh-emergency-description">Kidz Hospital is now open <strong>24 hours a day, 7 days a week</strong> for children's emergencies. Our emergency department is available day and night.</p>
+          <div class="kh-emergency-contact">
+            <span class="kh-emergency-contact__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h4l2 5-2.5 2c1.1 2.3 2.9 4.1 5.2 5.2l2-2.5 5 2v4c0 1.1-.9 2-2 2C11 21 3 13 3 5c0-1.1.9-2 2-2h1z"></path>
+              </svg>
+            </span>
+            <div>
+              <small>Emergency helpline</small>
+              <a href="tel:+923088091000" data-emergency-call>0308 809 1000</a>
+            </div>
+          </div>
+          <div class="kh-emergency-actions">
+            <a class="kh-emergency-call" href="tel:+923088091000" data-emergency-call>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h4l2 5-2.5 2c1.1 2.3 2.9 4.1 5.2 5.2l2-2.5 5 2v4c0 1.1-.9 2-2 2C11 21 3 13 3 5c0-1.1.9-2 2-2h1z"></path>
+              </svg>
+              Call Emergency
+            </a>
+            <button class="kh-emergency-continue" type="button" data-close-emergency>Continue to website</button>
+          </div>
+          <p class="kh-emergency-footnote">Kidz Hospital · Nishtarabad, Peshawar</p>
+        </div>
+      </section>
+    `;
+
+    const rememberSeen = () => {
+      try {
+        window.localStorage.setItem(storageKey, "dismissed");
+      } catch (error) {
+        // The visitor can still close the announcement without storage.
+      }
+    };
+
+    const close = () => {
+      rememberSeen();
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.classList.remove("kh-emergency-open");
+      overlay.remove();
+      if (lastFocusedElement instanceof HTMLElement && lastFocusedElement.isConnected) {
+        lastFocusedElement.focus({ preventScroll: true });
+      }
+    };
+
+    const getFocusables = () => Array.from(
+      overlay.querySelectorAll('button:not([disabled]), a[href]')
+    );
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+      } else if (event.key === "Tab") {
+        const focusables = getFocusables();
+        if (!focusables.length) {
+          event.preventDefault();
+          return;
+        }
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !overlay.contains(document.activeElement))) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && (document.activeElement === last || !overlay.contains(document.activeElement))) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    overlay.querySelectorAll("[data-close-emergency]").forEach((button) => {
+      button.addEventListener("click", close);
+    });
+    overlay.querySelectorAll("[data-emergency-call]").forEach((link) => {
+      // Preserve the tel: link's normal browser action when calling.
+      link.addEventListener("click", rememberSeen);
+    });
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) close();
+    });
+
+    document.body.appendChild(overlay);
+    document.body.classList.add("kh-emergency-open");
+    document.addEventListener("keydown", onKeyDown);
+    overlay.querySelector(".kh-emergency-close").focus({ preventScroll: true });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", openAnnouncement, { once: true });
+  } else {
+    openAnnouncement();
+  }
+})();
